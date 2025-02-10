@@ -2,7 +2,7 @@
 
 ## Overview
 
-This example Python script retrieves access events from the Verkada Events Access API, processes the event data, and stores it in a MySQL database. It automates the collection of access logs from the previous day and ensures that the relevant database and table exist before inserting data.
+This example Python script retrieves access events for an In/Out door used for employee time tracking from the Verkada Events REST API, processes the door access event data, and stores it in a MySQL database. It automates the collection of access logs from the previous day and ensures that the relevant database and table exist before inserting data.
 
 ## Features
 
@@ -24,25 +24,24 @@ This example Python script retrieves access events from the Verkada Events Acces
 
 1. Install dependencies:
    ```sh
-   pip install requests mysql-connector-python
+   pip3 install requests mysql-connector-python
    ```
 2. Update the script with your MySQL credentials:
    ```python
    db_config = {
        "host": "your_db_host",
        "user": "your_db_user",
-       "password": "your_db_password",
-       "auth_plugin": "mysql_native_password"
+       "password": "your_db_password"
    }
    ```
-3. Replace `my_secret_api_key` with your actual Verkada API key in the script.
+3. Replace `verkada_rest_api_key` with your actual Verkada API key in the script.
 
 ## Usage
 
 Run the script:
 
 ```sh
-python get_access_events_for_time_and_attendance.py
+python3 get_access_events_for_time_and_attendance.py
 ```
 
 ## Database Schema
@@ -78,11 +77,6 @@ CREATE TABLE access_events (
 
 ## Troubleshooting
 
-- **Authentication Plugin Error:** If you encounter an error regarding `caching_sha2_password`, ensure your MySQL user is using `mysql_native_password`.
-  ```sql
-  ALTER USER 'your_db_user'@'%' IDENTIFIED WITH mysql_native_password BY 'your_db_password';
-  FLUSH PRIVILEGES;
-  ```
 - **API Request Failure:** Ensure the API key is valid and that the Verkada API is accessible.
 
 ## License
